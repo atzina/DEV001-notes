@@ -5,6 +5,7 @@ GoogleAuthProvider,
 signInWithPopup,
 signOut,
 } from 'firebase/auth';
+import 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,3 +30,4 @@ export const loginWhithGoogle = () => {
 export const logOut = () => {
   return signOut(auth)
 }
+// export const db = app.firestore();

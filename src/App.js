@@ -1,10 +1,10 @@
 import React from'react';
 import './App.css';
 import {Routes,Route} from 'react-router-dom';
-import Home from './componentes/Home';
-import Login from './componentes/Login';
-import Register from './componentes/Register';
-import Wall from './componentes/Wall';
+import Home from './Vistas/Home';
+import Login from './Vistas/Login';
+import Register from './Vistas/Register';
+import Wall from './Vistas/Wall';
 
 
 function App() {

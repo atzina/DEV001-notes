@@ -25,7 +25,7 @@ function Home() {
           alt="carroviaje"
         />
         <div className={styles.login}>
-          <h4>inicia sesión con</h4>
+          <h4 className={styles.startText}>inicia sesión con</h4>
           <button className={styles.btnGoggle} onClick={handleGoogleSignin}>
             Google
           </button>

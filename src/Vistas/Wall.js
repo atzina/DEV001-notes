@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../firebase";
 import styles from "../style/Wall.module.css";
+import TitleNotes from "../components/TitleNotes";
 
 function Wall() {
   const navigate = useNavigate();
@@ -11,15 +12,22 @@ function Wall() {
   };
   return (
     <div>
-      <body>
-        <img
+      <header>
+      <img
           className={styles.carHead}
           src="https://i.postimg.cc/7Zx1xKfD/Encabezado-Recortado.png"
           alt="carro viajando"
         />
-        <h2>wall</h2>
-        <button className={styles.btnLogOut} onClick={handlesSignOut}>Regresar al Inicio</button>
-      </body>
+      </header>
+      <nav>
+        <button className={styles.btnLogOut} onClick={handlesSignOut}>
+          Regresar al Inicio
+        </button>
+      </nav>
+      <main>
+       
+        <TitleNotes />
+      </main>
     </div>
   );
 }

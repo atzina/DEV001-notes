@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Notes from "./Notes";
 import {db} from '../firebase';
+import styles from "../style/Wall.module.css";
 import { 
     addDoc,
     collection,
@@ -36,7 +37,7 @@ const getNotes = async() => {
   })   
       
     }
-// useEfrect recibe un arreglo con los datos que van cambiando, si cambia, esto se ejecuta
+// useEffect recibe un arreglo con los datos que van cambiando, si cambia, esto se ejecuta
     useEffect(()=>{
       getNotes();
         console.log('obteniendo datos')
@@ -45,10 +46,10 @@ const getNotes = async() => {
   return (
     <div>
       <Notes addOrEdit = {addOrEdit}/>
-      <div>
+      <div className={styles.divConteinerNotes}>
         {notes.map(note => (
-           <div>
-            <h1>{note.algoObject.title}</h1>
+           <div className={styles.divNotes}>
+            <h3>{note.algoObject.title}</h3>
             <p>{note.algoObject.content}</p>
             </div>
             ))}

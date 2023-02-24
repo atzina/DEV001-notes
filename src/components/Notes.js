@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../style/Wall.module.css";
 // useState para utilizar el estado de un componente
 
 const Notes = (props) => {
@@ -31,11 +32,12 @@ const Notes = (props) => {
         <input type="text" onChange={inputChange} name="title" value ={values.title}></input>
       </div>
       <div>
-        <textarea onChange={inputChange} name ="content" value={values.content}></textarea>
+        <textarea onChange={inputChange} name ="content" value={values.content} className={styles.textarea}></textarea>
       </div>
-      <button>Guardar Nota de Viaje</button>
+      <button className={styles.butonAddNote}>Guardar Nota de Viaje</button>
     </form>
   );
 };
+
 
 export default Notes;

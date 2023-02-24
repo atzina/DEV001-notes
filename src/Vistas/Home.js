@@ -14,8 +14,8 @@ function Home() {
   };
 
   return (
-    <div>
-      <body>
+    <div className={styles.conteiner}>
+      
         <div className={styles.divTitle}>
           <h1 className={styles.title}>Diario de Viaje</h1>
         </div>
@@ -30,7 +30,7 @@ function Home() {
             Google
           </button>
         </div>
-      </body>
+    
     </div>
   );
 }

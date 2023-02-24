@@ -2,6 +2,7 @@ main{
     background-color: #4ca5a4;
     display: flex;
     justify-content: center;
+    height: 878px;
 }
 .carHead{
     width: 100%;
@@ -9,6 +10,8 @@ main{
 nav{
     display: flex;
     justify-content: flex-end;
+    background-color: #4ca5a4;
+    margin:-1px;
 }
 .btnLogOut{
     width: 146px;
@@ -20,4 +23,28 @@ nav{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
     font-weight: bold;
+}
+.textarea{
+    width: 171px;
+}
+.butonAddNote{
+    width: 180px;
+    height: 30px;
+    margin: 8px;
+    border-radius: 15px;
+    background-color: #FFB6D5;
+    border:none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+.divNotes{
+    background-color: aliceblue;
+    border-radius: 9px;
+    margin: 2px;
+    padding: 10px;
+}
+.divConteinerNotes{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
 }

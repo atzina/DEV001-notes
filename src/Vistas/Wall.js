@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../firebase";
 import styles from "../style/Wall.module.css";
-import TitleNotes from "../components/TitleNotes";
+import Notes from "../components/Notes";
 
 function Wall() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ function Wall() {
       </nav>
       <main>
        
-        <TitleNotes />
+        <Notes />
       </main>
     </div>
   );

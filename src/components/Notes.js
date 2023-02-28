@@ -1,43 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import FormNotes from "./FormNotes";
+import { db } from "../firebase";
 import styles from "../style/Wall.module.css";
-// useState para utilizar el estado de un componente
+import {
+  addDoc,
+  collection,
+  query,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 
-const Notes = (props) => {
-  // Las siguientes dos constantes son la manera de definir el estado en React
-  const initialStateValues = {
-    title: '',
-    content: ''
+const Notes = () => {
+  const [notes, setNotes] = useState([]); // Estado vacío cada que getNotes traiga algo lo va a guardar en este arreglo.
+  const [currentId, setCurrentId] = useState("");
+
+  // función para guardar el objeto en firebase. El objeto viene definido por el props que en FormNotes tiene como parametro values, es decir lo tipeado por el usuario. 'notes' es el nombre de la colección.
+  const addOrEdit = async (algoObject) => {
+    if (currentId === "") {
+      await addDoc(collection(db, "notes"), {
+        algoObject,
+      });
+     } 
+     else {
+      await setDoc(doc(db, "notes", currentId), {
+        algoObject,
+      });
+      setCurrentId("");
+    }
+
+    console.log("nueva tarea agregada");
   };
-  const [values, setValues] = useState(initialStateValues);
 
-  // función que maneje el estado de los inputs (onchange)
-  const inputChange = (e) => {
-    const {name, value} = e.target;
-    setValues({...values, [name]:value}) // copia los valores de estado inicial con (...) y el imput que esten actualizando copia el valor nuevo tipeado
-    console.log(e.target.value); //target.value para imprimir la información del evento
-    
+  const deleteNote = async (id) => {
+    if (window.confirm("¿Estas segura de querer borrar la nota?")) {
+      await deleteDoc(doc(db, "notes", id));
+      console.log("nota eliminada");
+    }
   };
 
-  //submit va recibir la información del evento el envio del formulario
-  const submit = (e) => {
-    e.preventDefault();
-    props.addOrEdit(values);
-    setValues({...initialStateValues}) // este devuelve el valor inicial para limpiar el formulario luego de enviar.
+  const onGetNotes = (callback) => {
+    const queryNote = query(collection(db, "notes"));
+    onSnapshot(queryNote, callback);
   };
-  //cada vez que cambien los valores yo quiero alterar el estado
+  // getNotes hace una petición a firebase
+  const getNotes = async () => {
+    onGetNotes((querySnapshot) => {
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.data());
+        // console.log(doc.id);
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setNotes(docs); // se establece el estado
+    });
+  };
+  // useEffect recibe un arreglo con los datos que van cambiando, si cambia, esto se ejecuta. Cuando cambie el componente haga una peticón a firebase
+  useEffect(() => {
+    getNotes();
+    console.log("obteniendo datos");
+  }, []);
 
+  // finalmente se renderiza Notes() y el contenido de la colección que tipea en usuario para construir su nota
   return (
-    <form onSubmit={submit}> 
-      <div>
-        <input type="text" onChange={inputChange} name="title" value ={values.title}></input>
+    <div>
+      <FormNotes {...{ addOrEdit, currentId, notes }} />
+      <div className={styles.divConteinerNotes}>
+        {notes.length>0 && notes.map((note) => (
+          <div className={styles.divNotes} key={note.id}>
+            <h3>{note.title}</h3>
+            <p>{note.content}</p>
+            <button onClick={() => deleteNote(note.id)}>Borrar Nota</button>
+            <button onClick={() => setCurrentId(note.id)}>Editar</button>
+          </div>
+        ))}
       </div>
-      <div>
-        <textarea onChange={inputChange} name ="content" value={values.content} className={styles.textarea}></textarea>
-      </div>
-      <button className={styles.butonAddNote}>Guardar Nota de Viaje</button>
-    </form>
+    </div>
   );
 };
-
-
 export default Notes;

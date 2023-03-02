@@ -1,64 +1,52 @@
 .conteiner{
-    background-color: #4ca5a4;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 1448px;
 }
 .title{
     color:#FFB6D5;
-    font-size: 60px;
+    font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 208px;
+    margin-top: 38px;
 }
 .carroviaje{
-    width: 80%;
-    margin-top: 50px;
-
+    width: 35%;
 }
 .login{
     display:flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
-    margin-top: 111px;
 }
 .startText{
     color:#FFB6D5;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
+    font-size: 20px;
 }
 .btnGoggle{
-    width: 240px;
-    height: 60px;
+    width: 129px;
+    height: 31px;
     margin:20px;
     border-radius: 15px;
     background-color: #FFB6D5;
     border:none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: bold;
 }
 
-@media (min-width: 1000px) and (max-width: 1094px) {
+@media (min-width: 900px) and (max-width: 1094px) {
     /* for desktop*/
-    .conteiner{
-        height: 1448px;
-    }
     .carroviaje{
-        width: 60%;
-    }
-   
-   
+        width: 35%;
+    } 
 }
 
 @media (min-width: 1095px) and (max-width: 2047px) {
     /* for desktop*/
-    .conteiner{
-        height: 1448px;
-    }
+  
     .carroviaje{
-        width: 50%;
+        width: 30%;
     }
     .login{
         margin-top: 40px;
@@ -71,7 +59,7 @@
 @media  (min-width: 2048px)and (max-width: 3248px){
     /* for desktop big*/
     .carroviaje{
-        width: 30%;
+        width: 20%;
     }
     .title{
         margin-top: 100px;
@@ -81,30 +69,46 @@
     }
 }
 
-@media  (min-width: 375px) and (max-width: 767px) {
+@media  (min-width: 320px) and (max-width: 767px) {
     .title{
-        font-size: 35px;
+        font-size: 25px;
         margin-top: 71px;
     }
     .carroviaje{
-        width: 80%;
+        width: 50%;
     
     }
     .btnGoggle{
-        width: 156px;
-        height: 35px;
+        width: 129px;
+        height: 31px;
         margin: 4px;
         font-size: 15px;
     }
     .startText{
-        color:#FFB6D5;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 15px;
     }
     .login{
         flex-direction: column;
     }
-    .conteiner{
-        height: 1448px;
+   
+}
+@media  (min-width: 584px) and (max-width: 767px) {
+    .title{
+        font-size: 25px;
+        margin-top: 71px;
     }
+    .carroviaje{
+        width: 40%;
+    
+    }
+    .btnGoggle{
+        margin: 4px;
+        font-size: 15px;
+    }
+    .startText{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+    }
+   
 }

@@ -29,6 +29,7 @@ const FormNotes = (props) => {
   };
   //cada vez que cambien los valores yo quiero alterar el estado
 
+  // traemos una nota por su id para poder editarla en el mismo input
   const getNoteById = async (id) => {
     try{
       const thisDoc = await getDoc(doc(db,"notes", id));
@@ -53,12 +54,12 @@ const FormNotes = (props) => {
   return (
     <form onSubmit={submit}> 
       <div>
-        <input type="text" onChange={inputChange} name="title" defaultValue ={values.title}></input>
+        <input type="text" onChange={inputChange} name="title" value ={values.title}></input>
       </div>
       <div>
-        <textarea onChange={inputChange} name ="content" defaultValue={values.content} className={styles.textarea}></textarea>
+        <textarea onChange={inputChange} name ="content" value={values.content} className={styles.textarea}></textarea>
       </div>
-      <button className={styles.butonAddNote}>{props.currentId === '' ? 'Guaradar Nota': 'Actualizar'}</button>
+      <button className={styles.butonAddNote}>{props.currentId === '' ? 'Guardar Nota': 'Actualizar'}</button>
     </form>
   );
 };

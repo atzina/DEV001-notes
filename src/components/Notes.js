@@ -42,7 +42,7 @@ const Notes = () => {
 
   const onGetNotes = (callback) => {
     const queryNote = query(collection(db, "notes"));
-    onSnapshot(queryNote, callback);
+    onSnapshot(queryNote, callback); // onSanpshot realiza actualizaciones en tiempo real de los datos en firebase
   };
   // getNotes hace una petición a firebase
   const getNotes = async () => {
@@ -60,7 +60,7 @@ const Notes = () => {
   useEffect(() => {
     getNotes();
     console.log("obteniendo datos");
-  }, []);
+  }, []); // el efecto secundario se ejecutará después de cada renderizado cuando esta vacío
 
   // finalmente se renderiza Notes() y el contenido de la colección que tipea en usuario para construir su nota
   return (
@@ -69,8 +69,8 @@ const Notes = () => {
       <div className={styles.divConteinerNotes}>
         {notes.length>0 && notes.map((note) => (
           <div className={styles.divNotes} key={note.id}>
-            <h3>{note.title}</h3>
-            <p>{note.content}</p>
+            <h3>{note.algoObject.title}</h3>
+            <p>{note.algoObject.content}</p>
             <button onClick={() => deleteNote(note.id)}>Borrar Nota</button>
             <button onClick={() => setCurrentId(note.id)}>Editar</button>
           </div>

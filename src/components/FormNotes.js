@@ -8,14 +8,15 @@ const FormNotes = (props) => {
   // Las siguientes dos constantes son la manera de definir el estado en React
   const initialStateValues = {
     title: '',
-    content: ''
+    content: '',
   };
   const [values, setValues] = useState(initialStateValues);
+
 
   // función que maneje el estado de los inputs (onchange): que cuando cambia el imput traiga el valor inicial y lo intregre con el valor del cambio que se haya hecho en el imput
   const inputChange = (e) => {
     const {name, value} = e.target; // información del evento(no el valor)
-    setValues({...values, [name]:value}) // copia los valores de estado inicial con (...) y el imput que esten actualizando copia el valor nuevo tipeado
+    setValues({...values, [name]:value }) // copia los valores de estado inicial con (...) y el imput que esten actualizando copia el valor nuevo tipeado
     //  console.log(e.target.value); target.value para imprimir la información del evento
     
   };
@@ -54,10 +55,10 @@ const FormNotes = (props) => {
   return (
     <form onSubmit={submit}> 
       <div>
-        <input type="text" onChange={inputChange} name="title" value ={values.title}></input>
+        <input type="text" onChange={inputChange} name="title" value ={values.title} placeholder="Título"></input>
       </div>
       <div>
-        <textarea onChange={inputChange} name ="content" value={values.content} className={styles.textarea}></textarea>
+        <textarea onChange={inputChange} name ="content" value={values.content} className={styles.textarea} placeholder="Nota de viaje"></textarea>
       </div>
       <button className={styles.butonAddNote}>{props.currentId === '' ? 'Guardar Nota': 'Actualizar'}</button>
     </form>

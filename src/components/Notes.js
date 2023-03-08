@@ -19,13 +19,15 @@ const Notes = () => {
   // función para guardar el objeto en firebase. El objeto viene definido por el props que en FormNotes tiene como parametro values, es decir lo tipeado por el usuario. 'notes' es el nombre de la colección.
   const addOrEdit = async (algoObject) => {
     if (currentId === "") {
+      const date = new Date().toLocaleString();
       await addDoc(collection(db, "notes"), {
-        algoObject,
+        algoObject, date,
       });
      } 
      else {
+      const date = new Date().toLocaleString();
       await setDoc(doc(db, "notes", currentId), {
-        algoObject,
+        algoObject, date,
       });
       setCurrentId("");
     }
@@ -49,8 +51,10 @@ const Notes = () => {
     onGetNotes((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data());
+         console.log(doc.data());
         // console.log(doc.id);
+      
+    
         docs.push({ ...doc.data(), id: doc.id });
       });
       setNotes(docs); // se establece el estado
@@ -70,6 +74,7 @@ const Notes = () => {
         {notes.length>0 && notes.map((note) => (
           <div className={styles.divNotes} key={note.id}>
             <h3>{note.algoObject.title}</h3>
+            <p>{note.date}</p>
             <p>{note.algoObject.content}</p>
             <button onClick={() => deleteNote(note.id)}>Borrar Nota</button>
             <button onClick={() => setCurrentId(note.id)}>Editar</button>

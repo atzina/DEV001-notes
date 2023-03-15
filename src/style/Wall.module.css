@@ -7,6 +7,10 @@ main{
 .carHead{
     width: 100%;
 }
+header{
+    display: flex;
+    justify-content: center;
+}
 nav{
     display: flex;
     justify-content: flex-end;
@@ -16,7 +20,7 @@ nav{
 .btnLogOut{
     width: 146px;
     height: 30px;
-    margin: 8px;
+    margin: 22px;
     border-radius: 15px;
     background-color: #FFB6D5;
     border:none;
@@ -24,8 +28,12 @@ nav{
     font-size: 15px;
     font-weight: bold;
 }
+.inputTitle{
+    width: 303px;
+}
 .textarea{
-    width: 171px;
+    width: 303px;
+    height: 80px;
 }
 .butonAddNote{
     width: 180px;
@@ -43,8 +51,41 @@ nav{
     border-radius: 9px;
     margin: 2px;
     padding: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 12em
+
 }
 .divConteinerNotes{
     display: grid;
     grid-template-columns: 200px 200px 200px;
+}
+
+
+@media (min-width: 200px) and (max-width: 499px) {
+    /* for mobile*/
+    .divConteinerNotes{
+        display: grid;
+        grid-template-columns: 260px;
+    }
+    .inputTitle{
+        width: 260px;
+    }
+    .textarea{
+        width: 260px;
+        height: 80px;
+    }
+}
+@media (min-width: 500px) and (max-width: 720px) {
+    /* for mobile*/
+    .carHead{
+        width: 130%;
+    }
+}
+
+@media (min-width: 1110px) {
+    /* for mobile*/
+    .divConteinerNotes{
+        grid-template-columns: 200px 200px 200px 200px;
+    }
 }

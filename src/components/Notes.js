@@ -51,7 +51,7 @@ const Notes = () => {
     onGetNotes((querySnapshot) => {
       const docs = [];
       querySnapshot.forEach((doc) => {
-         console.log(doc.data());
+         // console.log(doc.data());
         // console.log(doc.id);
       
     

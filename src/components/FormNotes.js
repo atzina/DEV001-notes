@@ -55,7 +55,7 @@ const FormNotes = (props) => {
   return (
     <form onSubmit={submit}> 
       <div>
-        <input type="text" onChange={inputChange} name="title" value ={values.title} placeholder="Título"></input>
+        <input type="text" onChange={inputChange} name="title" value ={values.title} className={styles.inputTitle} placeholder="Título"></input>
       </div>
       <div>
         <textarea onChange={inputChange} name ="content" value={values.content} className={styles.textarea} placeholder="Nota de viaje"></textarea>

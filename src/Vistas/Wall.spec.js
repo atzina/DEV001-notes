@@ -41,6 +41,6 @@ it("testea si existe el boton guardar nota", () => {
 });
 
 it("testea si existe el boton regresar al inicio", () =>{
-  const btnHome = screen.getByText(/regresar al inicio/i);
+  const btnHome = screen.getByRole('button',{ name:'Regresar al Inicio'});
   expect(btnHome).toBeInTheDocument();
 });

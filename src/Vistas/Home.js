@@ -1,6 +1,5 @@
 import React from "react";
 import { loginWhithGoogle } from "../firebase";
-import App from "../App";
 import { useNavigate } from "react-router-dom";
 import styles from "../style/Home.module.css";
 

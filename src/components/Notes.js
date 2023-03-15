@@ -64,6 +64,7 @@ const Notes = () => {
   useEffect(() => {
     getNotes();
     console.log("obteniendo datos");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // el efecto secundario se ejecutará después de cada renderizado cuando esta vacío
 
   // finalmente se renderiza Notes() y el contenido de la colección que tipea en usuario para construir su nota

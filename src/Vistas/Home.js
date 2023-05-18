@@ -2,6 +2,7 @@ import React from "react";
 import { loginWhithGoogle } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "../style/Home.module.css";
+import image from "../images/home-Sin-Espacios.png"
 
 function Home() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Home() {
         </div>
         <img
           className={styles.carroviaje}
-          src="https://i.postimg.cc/76VTTZbp/home-Sin-Espacios.png"
+          src={image}
           alt="carroviaje"
         />
         <div className={styles.login}>
